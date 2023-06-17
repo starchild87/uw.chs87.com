@@ -37,10 +37,11 @@ def airtable_trigger():
             data = r.json()
             records = data['records']
             print(records)
-        except e:
+        except Exception as e:
             print(repr(e))
-    except e:
+    except Exception as e:
         print(repr(e))
+    return {'records': records}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
